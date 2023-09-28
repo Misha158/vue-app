@@ -18,7 +18,7 @@ const addNewTodo = (todo: any) => {
 <template>
   <div class="greetings">
     <CounterVue />
-    <FormVue :addNewTodo="addNewTodo" />
+    <FormVue @createNewTodo="addNewTodo" />
     <TodosVue :todos="todos" />
   </div>
 </template>

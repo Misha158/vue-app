@@ -10,13 +10,15 @@ const { addNewTodo } = defineProps({
 const title = ref('')
 const body = ref('')
 
+const emit = defineEmits(['createNewTodo'])
+
 const addNewTodoHandler = () => {
   const newTodo = {
     title: title.value,
     id: Date.now()
   }
 
-  addNewTodo?.(newTodo)
+  emit('createNewTodo', newTodo)
 }
 </script>
 
