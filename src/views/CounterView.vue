@@ -1,7 +1,14 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
+import TodosView from './TodosView.vue'
+import FormVue from '@/components/FormVue.vue'
 
 const counter = ref(0)
+const todos = ref([
+  { id: 1, title: 'todo-1' },
+  { id: 2, title: 'todo-2' },
+  { id: 3, title: 'todo-3' }
+])
 
 const increment = () => {
   counter.value++
@@ -9,6 +16,10 @@ const increment = () => {
 
 const decrement = () => {
   counter.value--
+}
+
+const addNewTodo = (todo: any) => {
+  todos.value.push(todo)
 }
 
 // lifecycle hooks
@@ -23,6 +34,13 @@ onMounted(() => {
     <button @click="increment">Increment</button>
     <button @click="decrement">Decrement</button>
     <div>Counter: {{ counter }}</div>
+
+    <div :style="{ 'margin-top': '30px' }">
+      <TodosView :todos="todos" />
+    </div>
+    <div :style="{ 'margin-top': '30px' }">
+      <FormVue :addNewTodo="addNewTodo" />
+    </div>
   </div>
 </template>
 
