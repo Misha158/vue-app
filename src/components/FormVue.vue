@@ -1,11 +1,5 @@
 <script setup lang="ts">
-import { ref, defineProps } from 'vue'
-
-const { addNewTodo } = defineProps({
-  addNewTodo: {
-    type: Function
-  }
-})
+import { ref } from 'vue'
 
 const title = ref('')
 const body = ref('')
