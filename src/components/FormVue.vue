@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, defineProps } from 'vue'
 
-const props = defineProps({
+const { addNewTodo } = defineProps({
   addNewTodo: {
     type: Function
   }
@@ -16,26 +16,29 @@ const addNewTodoHandler = () => {
     id: Date.now()
   }
 
-  props.addNewTodo?.(newTodo)
+  addNewTodo?.(newTodo)
 }
 </script>
 
 <template>
-  <form @submit.prevent="addNewTodoHandler">
-    <input
-      type="text"
-      v-bind:value="title"
-      @input="title = ($event.target as HTMLInputElement)?.value"
-      placeholder="title"
-    />
-    <input
-      type="text"
-      v-bind:value="body"
-      @input="body = ($event.target as HTMLInputElement)?.value"
-      placeholder="body"
-    />
-    <button>Sumbit</button>
-  </form>
+  <div :style="{ 'margin-top': '30px' }">
+    <form @submit.prevent="addNewTodoHandler">
+      <input
+        type="text"
+        v-model="title"
+        @input="title = ($event.target as HTMLInputElement)?.value"
+        placeholder="title"
+      />
+      <input
+        type="text"
+        v-model="body"
+        @input="body = ($event.target as HTMLInputElement)?.value"
+        placeholder="body"
+      />
+
+      <button>Sumbit</button>
+    </form>
+  </div>
 </template>
 
 <style scoped></style>

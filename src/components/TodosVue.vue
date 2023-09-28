@@ -10,10 +10,12 @@ defineProps({
 </script>
 
 <template>
-  <div class="greetings">
-    <div>Todos page</div>
-    <div v-for="todo in todos" :key="todo.id">
-      <div>{{ todo.title }}</div>
+  <div :style="{ 'margin-top': '30px' }">
+    <div class="greetings">
+      <div>Todos page</div>
+      <div v-for="todo in todos" :key="todo.id">
+        <div>{{ todo.title }}</div>
+      </div>
     </div>
   </div>
 </template>
