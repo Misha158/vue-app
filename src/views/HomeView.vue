@@ -2,13 +2,15 @@
 import { ref } from 'vue'
 import TodosVue from '@/components/TodosVue.vue'
 import FormVue from '@/components/FormVue.vue'
-import CounterVue from '@/components/CounterVue.vue'
+import FilterVue from '@/components/FilterVue.vue'
 
-const todos = ref([
+const initialTodos = [
   { id: 1, title: 'todo-1' },
   { id: 2, title: 'todo-2' },
   { id: 3, title: 'todo-3' }
-])
+]
+
+const todos = ref(initialTodos)
 
 const addNewTodo = (todo: any) => {
   todos.value.push(todo)
@@ -27,12 +29,19 @@ const onSaveUpdatedTodo = (id: number, title: string) => {
     return todo
   })
 }
+
+const filterTodos = (text: string) => {
+  console.log('text', text)
+  if (!text) return (todos.value = initialTodos)
+
+  todos.value = todos.value.filter((todo) => todo.title.includes(text))
+}
 </script>
 
 <template>
   <div class="greetings">
-    <CounterVue />
     <FormVue @createNewTodo="addNewTodo" />
+    <FilterVue :filterTodos="filterTodos" />
     <TodosVue @deleteTodo="onDeleteTodo" @onSaveUpdatedTodo="onSaveUpdatedTodo" :todos="todos" />
   </div>
 </template>
