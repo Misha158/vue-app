@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { ref, type PropType } from 'vue'
+import { ref } from 'vue'
+import type { PropType } from 'vue'
 
 defineProps({
   todos: {
@@ -38,10 +39,7 @@ const onSaveUpdatedTodo = (id: number, title: string) => {
               {{ todo.title }}
             </div>
             <div class="title" v-show="isShowUpdateInput === todo.id">
-              <input
-                v-model="todo.title"
-                @input="newTitle = ($event.target as HTMLInputElement)?.value"
-              />
+              <input v-model="todo.title" @input="newTitle = $event.target?.value" />
               <button @click="onSaveUpdatedTodo(todo.id, newTitle)">Save</button>
             </div>
           </div>

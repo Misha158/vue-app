@@ -2,10 +2,15 @@
   <div>
     <label class="label">
       Filter by title
-      <input type="text" placeholder="Search for title" @input="filterTodos(($event.target as HTMLInputElement)?.value)" />
+      <input
+        type="text"
+        placeholder="Search for title"
+        @input="filterTodos($event.target?.value)"
+      />
     </label>
   </div>
 </template>
+
 <script lang="ts" setup>
 const { filterTodos } = defineProps({
   filterTodos: {
@@ -14,6 +19,7 @@ const { filterTodos } = defineProps({
   }
 })
 </script>
+
 <style scoped>
 .label {
   display: flex;

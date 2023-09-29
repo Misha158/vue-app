@@ -22,15 +22,10 @@ const addNewTodoHandler = () => {
       <input
         type="text"
         v-model="title"
-        @input="title = ($event.target as HTMLInputElement)?.value"
+        @input="title = $event.target?.value"
         placeholder="title"
       />
-      <input
-        type="text"
-        v-model="body"
-        @input="body = ($event.target as HTMLInputElement)?.value"
-        placeholder="body"
-      />
+      <input type="text" v-model="body" @input="body = $event.target?.value" placeholder="body" />
 
       <button>Sumbit</button>
     </form>
