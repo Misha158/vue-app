@@ -18,17 +18,12 @@ const addNewTodoHandler = () => {
 
 <template>
   <div :style="{ 'margin-top': '30px' }">
-    <form @submit.prevent="addNewTodoHandler">
-      <input
-        type="text"
-        v-model="title"
-        @input="title = $event.target?.value"
-        placeholder="title"
-      />
-      <input type="text" v-model="body" @input="body = $event.target?.value" placeholder="body" />
+    <v-form @submit.prevent="addNewTodoHandler">
+      <v-text-field v-model="title" label="Title of new todo" required hide-details></v-text-field>
+      <v-text-field v-model="body" label="Body of new todo" required hide-details></v-text-field>
 
-      <button>Sumbit</button>
-    </form>
+      <v-btn type="submit">Submit</v-btn>
+    </v-form>
   </div>
 </template>
 
