@@ -3,6 +3,7 @@ import { ref } from 'vue'
 import TodosVue from '@/components/TodosVue.vue'
 import FormVue from '@/components/FormVue.vue'
 import FilterVue from '@/components/FilterVue.vue'
+import MyModal from '@/components/MyModal.vue'
 
 const initialTodos = [
   { id: 1, title: 'todo-1' },
@@ -31,7 +32,6 @@ const onSaveUpdatedTodo = (id: number, title: string) => {
 }
 
 const filterTodos = (text: string) => {
-  console.log('text', text)
   if (!text) return (todos.value = initialTodos)
 
   todos.value = todos.value.filter((todo) => todo.title.includes(text))
@@ -40,7 +40,9 @@ const filterTodos = (text: string) => {
 
 <template>
   <div class="greetings">
-    <FormVue @createNewTodo="addNewTodo" />
+    <MyModal textBtn="Create new todo" content="">
+      <FormVue @createNewTodo="addNewTodo" />
+    </MyModal>
     <FilterVue :filterTodos="filterTodos" />
     <TodosVue @deleteTodo="onDeleteTodo" @onSaveUpdatedTodo="onSaveUpdatedTodo" :todos="todos" />
   </div>

@@ -17,7 +17,7 @@ const addNewTodoHandler = () => {
 </script>
 
 <template>
-  <div :style="{ 'margin-top': '30px' }">
+  <div :style="{ 'margin-top': '30px', width: '500px', padding: '10px' }">
     <v-form @submit.prevent="addNewTodoHandler">
       <v-text-field v-model="title" label="Title of new todo" required hide-details></v-text-field>
       <v-text-field v-model="body" label="Body of new todo" required hide-details></v-text-field>
